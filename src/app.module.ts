@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StateModule } from './state/state.module';
 import { CityModule } from './city/city.module';
+import { CacheModule } from './cache/cache.module';
 
 
 
@@ -28,6 +29,7 @@ import { CityModule } from './city/city.module';
     UserModule,
     StateModule,
     CityModule,
+    CacheModule,
   ],
   controllers: [AppController],
   providers: [AppService],

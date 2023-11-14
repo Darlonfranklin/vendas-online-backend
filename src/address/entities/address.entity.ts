@@ -1,7 +1,12 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { CityEntity } from "src/city/entities/city.entity";
+import { UserEntity } from "src/user/entities/user.entity";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity({ name: 'address' })
 export class AddressEntity {
+    map(arg0: (address: any) => import("../dtos/returnAddress.dto").ReturnAddressDto): import("../dtos/returnAddress.dto").ReturnAddressDto[] {
+        throw new Error("Method not implemented.");
+    }
     @PrimaryGeneratedColumn('rowid')
     id: number;
 
@@ -26,14 +31,11 @@ export class AddressEntity {
     @UpdateDateColumn({ name: 'updated_at' })
     updatedAt: Date;
 
-    // @ManyToOne(() => UserEntity, (user) => user.addresses)
-    // @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
-    // user?: UserEntity;
+    @ManyToOne(() => UserEntity, (user) => user.addresses)
+    @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+    user?: UserEntity;
 
-    // @ManyToOne(() => CityEntity, (city) => city.addresses)
-    // @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
-    // city?: CityEntity;
-
-    // @OneToMany(() => OrderEntity, (order) => order.address)
-    // orders?: OrderEntity[];
+    @ManyToOne(() => CityEntity, (city) => city.addresses)
+    @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
+    city?: CityEntity;
 }

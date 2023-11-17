@@ -4,11 +4,10 @@ import { StateService } from './state.service';
 
 @Controller('state')
 export class StateController {
+  constructor(private readonly stateService: StateService) { }
 
-    constructor(private readonly stateService: StateService) { }
-
-    @Get()
-    async getAllState(): Promise<StateEntity[]> {
-        return this.stateService.getAllState()
-    }
+  @Get()
+  async getAllState(): Promise<StateEntity[]> {
+    return this.stateService.getAllState();
+  }
 }

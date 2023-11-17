@@ -9,12 +9,10 @@ import { CityModule } from './city/city.module';
 import { CacheModule } from './cache/cache.module';
 import { AddressModule } from './address/address.module';
 
-
-
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env.development.local', '.env.development']
+      envFilePath: ['.env.development.local', '.env.development'],
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -25,7 +23,7 @@ import { AddressModule } from './address/address.module';
       username: process.env.DB_USERNAME,
       entities: [`${__dirname}/**/*.entity{.js,.ts}`],
       migrations: [`${__dirname}/migration/{.ts,*.js}`],
-      migrationsRun: true
+      migrationsRun: true,
     }),
     UserModule,
     StateModule,
@@ -36,4 +34,4 @@ import { AddressModule } from './address/address.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

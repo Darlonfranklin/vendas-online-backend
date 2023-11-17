@@ -3,10 +3,12 @@ import { CacheService } from './cache.service';
 import { CacheModule as CacheModuleRest } from '@nestjs/cache-manager';
 
 @Module({
-  imports: [CacheModuleRest.register({
-    ttl: 900000000,
-  })],
+  imports: [
+    CacheModuleRest.register({
+      ttl: 900000000,
+    }),
+  ],
   providers: [CacheService],
-  exports: [CacheService]
+  exports: [CacheService],
 })
-export class CacheModule { }
+export class CacheModule {}

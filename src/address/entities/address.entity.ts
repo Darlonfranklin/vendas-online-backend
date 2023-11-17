@@ -4,38 +4,36 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGenerat
 
 @Entity({ name: 'address' })
 export class AddressEntity {
-    map(arg0: (address: any) => import("../dtos/returnAddress.dto").ReturnAddressDto): import("../dtos/returnAddress.dto").ReturnAddressDto[] {
-        throw new Error("Method not implemented.");
-    }
-    @PrimaryGeneratedColumn('rowid')
-    id: number;
 
-    @Column({ name: 'user_id', nullable: false })
-    userId: number;
+  @PrimaryGeneratedColumn('rowid')
+  id: number;
 
-    @Column({ name: 'complement', nullable: true })
-    complement: string;
+  @Column({ name: 'user_id', nullable: false })
+  userId: number;
 
-    @Column({ name: 'number', nullable: false })
-    numberAddress: number;
+  @Column({ name: 'complement', nullable: true })
+  complement: string;
 
-    @Column({ name: 'cep', nullable: false })
-    cep: string;
+  @Column({ name: 'number', nullable: false })
+  numberAddress: number;
 
-    @Column({ name: 'city_id', nullable: false })
-    cityId: number;
+  @Column({ name: 'cep', nullable: false })
+  cep: string;
 
-    @CreateDateColumn({ name: 'created_at' })
-    createdAt: Date;
+  @Column({ name: 'city_id', nullable: false })
+  cityId: number;
 
-    @UpdateDateColumn({ name: 'updated_at' })
-    updatedAt: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
 
-    @ManyToOne(() => UserEntity, (user) => user.addresses)
-    @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
-    user?: UserEntity;
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 
-    @ManyToOne(() => CityEntity, (city) => city.addresses)
-    @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
-    city?: CityEntity;
+  @ManyToOne(() => UserEntity, (user) => user.addresses)
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+  user?: UserEntity;
+
+  @ManyToOne(() => CityEntity, (city) => city.addresses)
+  @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
+  city?: CityEntity;
 }

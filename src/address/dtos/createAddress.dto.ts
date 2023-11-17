@@ -1,16 +1,16 @@
-import { IsOptional, IsString, IsInt } from "class-validator";
+import { IsOptional, IsString, IsInt } from 'class-validator';
 
 export class CreateAddressDto {
-    @IsString()
-    @IsOptional()
-    complement: string;
+  @IsString()
+  @IsOptional()
+  complement: string;
 
-    @IsInt()
-    numberAddress: number;
+  @IsInt()
+  numberAddress: number;
 
-    @IsString()
-    cep: string;
+  @IsString()
+  cep: string;
 
-    @IsInt()
-    cityId: number;
+  @IsInt()
+  cityId: number;
 }

@@ -9,6 +9,8 @@ import { CityModule } from './city/city.module';
 import { CacheModule } from './cache/cache.module';
 import { AddressModule } from './address/address.module';
 import { AuthModule } from './auth/auth.module';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './guards/roles.guard';
 
 @Module({
   imports: [
@@ -34,6 +36,12 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+    AppService
+  ],
 })
-export class AppModule {}
+export class AppModule { }

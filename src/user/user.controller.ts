@@ -17,7 +17,8 @@ export class UserController {
 
     @Get()
     async getAllUser(): Promise<ReturnUserDto[]> {
-        return (await (this.userService.getAllUser())).map((userEntity) => new ReturnUserDto(userEntity));
+        return (await (this.userService.getAllUser()))
+            .map((userEntity) => new ReturnUserDto(userEntity));
     }
 
     @Get("/:userId")

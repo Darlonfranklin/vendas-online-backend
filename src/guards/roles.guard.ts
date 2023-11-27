@@ -2,16 +2,13 @@ import { Injectable, Dependencies, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { LoginPayload } from 'src/auth/dtos/loginPayload.dto';
-import { ROLES_KEY } from 'src/decorators/roles.decorators';
+import { ROLES_KEY } from 'src/decorators/roles.decorator';
 import { UserType } from 'src/user/enum/user-type.enum';
 
 @Injectable()
 @Dependencies(Reflector)
 export class RolesGuard {
-    constructor(
-        private reflector: Reflector,
-        private readonly jwtService: JwtService
-    ) {
+    constructor(private reflector: Reflector, private readonly jwtService: JwtService) {
         this.reflector = reflector;
     }
 

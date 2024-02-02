@@ -7,8 +7,7 @@ import { Repository } from 'typeorm';
 export class StateService {
   constructor(
     @InjectRepository(StateEntity)
-    private readonly stateRepository: Repository<StateEntity>,
-  ) { }
+    private readonly stateRepository: Repository<StateEntity>) { }
 
   async getAllState(): Promise<StateEntity[]> {
     return this.stateRepository.find();

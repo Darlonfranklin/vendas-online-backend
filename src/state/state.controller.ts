@@ -8,7 +8,6 @@ export class StateController {
 
   @Get()
   async getAllState(): Promise<ReturnStateDto[]> {
-    return (await (this.stateService.getAllState()))
-      .map((stateEntity) => new ReturnStateDto(stateEntity));
+    return (await (this.stateService.getAllState())).map((stateEntity) => new ReturnStateDto(stateEntity));
   }
 }
